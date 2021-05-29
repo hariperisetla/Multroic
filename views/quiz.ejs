@@ -1,0 +1,50 @@
+<!-- head -->
+<%- include('./partials/head.ejs') %>
+
+<body>  
+  <!-- main-section -->
+  <%- include('./partials/nav.ejs') %>
+
+  <section style="margin-top:100px">
+
+    
+    <div class="container text-center">
+        <h2>QUIZ</h2>
+                <div class="row text-center create-play-container">
+                    <div class="col-md-6">
+
+
+                        <% if (!user.confirm) { %>
+                            <a href="" id="createDisabled"><i class="fas fa-plus-square fa-9x"></i>
+                                <h2>Create Quiz</h2>
+                            </a>
+                            <p id="createDisabledDiv" style="display:none">Please Confirm Your account to create a quiz. <a href="/profile/<%= user.username %>">Click to Confirm Account</a> </p>
+                            <% } else { %>
+
+                        <a href="/quiz/create"><i class="fas fa-plus-square fa-9x"></i>
+                        <h2>Create Quiz</h2>
+                    </a>
+                    <% } %>
+                    </div>
+                    <div class="col-md-6">
+                        <a href="play.html"><i class="fas fa-gamepad fa-9x"></i>
+                        <h2>Play Quiz</h2>
+                    </a>
+                    </div>
+                </div>
+            </div>
+          </div>
+      </div>
+  </section>
+
+  <script>
+  document.getElementById('createDisabled').addEventListener('click', e => {
+      e.preventDefault();
+      document.getElementById('createDisabledDiv').style.display = "block"   
+  })
+  
+
+</script>
+
+  
+  <%- include('./partials/footer.ejs') %>

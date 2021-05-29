@@ -1,0 +1,160 @@
+<!-- head -->
+<%- include('./partials/head.ejs') %>
+<body>
+  <%- include('./partials/nav.ejs') %>
+<!-- <section class="">
+        
+    <nav class="navbar navbar-expand-lg navbar-light nav-class" style="border-bottom: 1px solid;">
+        <div class="container">
+        
+          <a class="navbar-brand" href="#"><h1>Multy</h1></a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+  
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="mx-auto"></div>
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="games.html">Games</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">About</a>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+  </section> -->
+
+  <section style="margin-top:100px">
+
+    
+    <form class="avatarForm" method="POST" action="/profile/avatars">
+      <div class="container text-center">
+        <div class="row justify-content-center">
+          <h2>Select your Avatar</h2>
+        </div>
+
+        <div class="row justify-content-center">
+            <!-- <div class="col">
+            </div> -->
+           
+            <div class="col-12 col-md-3 main-avatar">
+              <img src="/assets/img/avatars/SVG/default.svg" alt="" width="356px">
+              <input class="form-control" type="text" placeholder="<%- user.username %>" value="<%- user._id %>" name="_id" readonly>
+            <input class="form-control avatar-src" type="text" placeholder="/assets/img/avatars/SVG/default.svg" value="/assets/img/avatars/SVG/default.svg" name="avatar" readonly>
+          </div>
+          <!-- <div class="col"></div> -->
+        </div>
+            <div class="row text justify-content-center p-3 profile-images">
+              <div class="col-4 col-md-2 avatar-active" onclick="avatar(this)">
+                <img src="/assets/img/avatars/SVG/default.svg" alt="">
+            </div>
+                <div class="col-4 col-md-2" onclick="avatar(this)">
+                    <img src="/assets/img/avatars/SVG/1.svg" alt="">
+                </div>
+                <div class="col-4 col-md-2" onclick="avatar(this)">
+                    <img src="/assets/img/avatars/SVG/2.svg" alt="">
+                </div>
+                <div class="col-4 col-md-2" onclick="avatar(this)">
+                    <img src="/assets/img/avatars/SVG/3.svg" alt="">
+                </div>
+                <div class="col-4 col-md-2" onclick="avatar(this)">
+                    <img src="/assets/img/avatars/SVG/4.svg" alt="">
+                </div>
+                <div class="col-4 col-md-2" onclick="avatar(this)">
+                    <img src="/assets/img/avatars/SVG/5.svg" alt="">
+                </div>
+                <div class="col-4 col-md-2" onclick="avatar(this)">
+                    <img src="/assets/img/avatars/SVG/6.svg" alt="">
+                </div>
+                <div class="col-4 col-md-2" onclick="avatar(this)">
+                    <img src="/assets/img/avatars/SVG/7.svg" alt="">
+                </div>
+                <div class="col-4 col-md-2" onclick="avatar(this)">
+                    <img src="/assets/img/avatars/SVG/8.svg" alt="">
+                </div>
+                <div class="col-4 col-md-2" onclick="avatar(this)">
+                    <img src="/assets/img/avatars/SVG/9.svg" alt="">
+                </div>
+                <div class="col-4 col-md-2" onclick="avatar(this)">
+                    <img src="/assets/img/avatars/SVG/10.svg" alt="">
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="row py-5">
+          <div class="col text-center">
+            <button type="submit" class="btn btn-primary btn-block pt-3 px-5"><p>Skip</p></button>
+          </div> -->
+          <div class="col text-center">
+            <button type="submit" class="btn btn-primary btn-block pt-3 px-5"><p>Select</p></button>
+          </div>
+        </div>
+                    
+    </form>
+  </section>
+
+  <%- include('./partials/footer.ejs') %>
+  <script>
+    
+    const avatars = document.querySelector('.profile-images').children;
+                  function avatar(event) {
+                        // event.children[0]
+                        // console.log(event)
+                     
+                        // console.log(window.location.pathname)
+                        // console.log(event.children[0].src);
+                        const av = event.children[0].src.replace(/^.*\/\/[^\/]+/, '');
+                        const src = document.querySelector('.avatar-src');
+                        document.querySelector('.main-avatar').children[0].src = av;
+                        // src = event.children[0].src;
+                        document.querySelector('.avatar-src').setAttribute("value", av);
+
+                      for(i = 0 ; i < avatars.length; i++)
+                      {
+                        //   console.log(avatars[i]);
+                       avatars[i].classList.remove('avatar-active');   
+                      }
+                      event.classList.add('avatar-active');
+                      // event.setAttribute("name", av);
+                  }
+        
+                // const avatarForm = document.querySelector('.avatarForm');
+                // avatarForm.addEventListener('submit', async (e) => {
+                //   e.preventDefault();
+                //   const avatarSrc = document.querySelector('.main-avatar').children[0].src;
+                //   console.log(avatarSrc);
+                //   try {
+                //     const res = await fetch('/avatars', {
+                //       method: 'POST',
+                //       bosy: JSON.stringify({ avatar: avatarSrc }),
+                //       headers: { 'Content-Type': 'application/json'}
+                //     });
+                //     const data = await res.json();
+                //     console.log(data);
+                //     if(data.user) {
+                //       location.assign('/');
+                //     }
+                //   }
+                //   catch (err) {
+                //     console.log(err);
+                //   }
+                // })
+              </script>

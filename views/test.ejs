@@ -1,0 +1,230 @@
+<!-- head -->
+<%- include('./partials/head.ejs') %>
+
+<body>
+  <!-- main-section -->
+  <%- include('./partials/nav.ejs') %>
+
+  <section style="margin-top: 100px">
+    <div class="container">
+      <h1 class="text-center">Create Quiz</h1>
+      <form action="/quiz/create" method="POST">
+        <h1><%= questionNumber %></h1>
+
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-6 p-2">
+              <label for="quizId">Quiz Id</label>
+              <input
+                type="text"
+                class="form-control"
+                id="quizId"
+                name="quizId"
+                value="<%= quizId %>"
+                placeholder="Enter Quiz Id"
+                readonly
+              />
+            </div>
+            <div class="col-md-6 p-2">
+              <label for="username">Username</label>
+              <input
+                type="text"
+                class="form-control"
+                id="user"
+                name="username"
+                value="<%= user.username %>"
+                placeholder="Enter Username"
+                readonly
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col p-2">
+              <label for="quizName">Quiz Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="quizName"
+                name="quizName"
+                value="<%= quizName %>"
+                placeholder="Enter Question"
+                <%="readonly"
+                %
+              />>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col p-2">
+              <label for="question">Question <%= questionNumber %></label>
+              <input
+                type="text"
+                class="form-control"
+                id="question"
+                name="question"
+                placeholder="Enter Question"
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 p-2">
+              <label for="option1">Option 1</label>
+              <input
+                type="text"
+                class="form-control"
+                id="option1"
+                name="1"
+                placeholder="Enter Option 1"
+              />
+            </div>
+            <div class="col-md-6 p-2">
+              <label for="option1">Option 2</label>
+              <input
+                type="text"
+                class="form-control"
+                id="option2"
+                name="2"
+                placeholder="Enter Option 1"
+              />
+            </div>
+          </div>
+          <div class="row" id="options-container"></div>
+          <div class="row">
+            <div class="col p-2">
+              <!-- <label for="quizLink">Quiz Link</label> -->
+              <input
+                type="url"
+                class="form-control form-control-lg"
+                id="quizLink"
+                value="https://multroic.herokuapp.com/quiz/<%= user.username %>/<%= quizId %>/"
+                placeholder="quizlink"
+                readonly
+              />
+            </div>
+            <div class="col p-2">
+              <!-- <label for="link">Click to Copy Link</label> -->
+              <button
+                id="clickLink"
+                class="btn btn-primary"
+                data-container="body"
+                data-toggle="popover"
+                data-placement="top"
+                data-content="Link Copied to Clipboard"
+              >
+                Click to Copy Link
+              </button>
+            </div>
+          </div>
+          <div class="col p-2">
+            <!-- <label for="quizLink">Quiz Link</label> -->
+            <input
+              type="number"
+              class="form-control"
+              id="answer"
+              name="answer"
+              placeholder="answer"
+            />
+          </div>
+          <div class="row">
+            <div class="col">
+              <button id="add_field_btn" class="btn btn-success">
+                Add Option
+              </button>
+
+              <button id="remove_field_btn" class="btn btn-danger">
+                Remove Option
+              </button>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </div>
+          <div class="row">
+            <!-- <div class="col-md-6 p-2">
+                <label for="answer">Option 1</label>
+            <input type="text" class="form-control" id="quizId" name="[options]" placeholder="Enter Option 1">
+              </div> -->
+            <!-- <div class="col-md-6 p-2">
+                <label for="option1">Option 2</label>
+            <input type="text" class="form-control" id="quizId" name="[options]" placeholder="Enter Option 1">
+              </div> -->
+          </div>
+
+          <!-- <input type="text" name="quizId" value="<%= quizId %>"  readonly> -->
+
+          <!-- Name: <input type="text" name="username" id="name" value="<%= user.username %>" readonly><br> -->
+          <!-- Limit: <input type="number" name="limit" id="Limit"><br> -->
+          <!-- Question: <input type="text" name="[question]" id="question"><br> -->
+
+          <!-- <div class="options-container">
+          option1: <input type="text" name="[options]" id="option 1"><br>
+        option1: <input type="text" name="[options]" id="option 2"><br>
+        
+        </div>
+        <input type="text" name="answer" id="answer"> -->
+          <!-- option2: <input type="text" name="isCorrect2" id="option 2"><br> -->
+        </div>
+        <br />
+        <!-- <input type="text" name="isCorrect" id="isCorrect"> -->
+        <!-- <br>
+      <button id="add_field_btn" >Add</button>
+      <button id="remove_field_btn" >Add</button>
+      <br>
+      <br><input type="submit"> -->
+      </form>
+    </div>
+  </section>
+  <script>
+    i = 3;
+    document.getElementById("add_field_btn").addEventListener("click", (e) => {
+      e.preventDefault();
+
+      const row = document.createElement("div");
+      const col = document.createElement("div");
+      const label = document.createElement("label");
+      const input = document.createElement("input");
+
+      label.setAttribute("for", "option" + i);
+      label.innerHTML = "Option " + i;
+      col.classList.add("col-md-6", "p-2", "option" + i);
+      col.setAttribute("id", "opt" + i);
+      row.classList.add("row");
+      input.setAttribute("type", "text");
+      input.setAttribute("name", "[options]");
+      input.setAttribute("id", "option" + i);
+      input.setAttribute("placeholder", "Enter Option " + i);
+      input.classList.add("form-control");
+
+      col.appendChild(label);
+      col.appendChild(input);
+      // row.appendChild(col)
+
+      document.getElementById("options-container").appendChild(col);
+      i++;
+    });
+
+    document
+      .getElementById("remove_field_btn")
+      .addEventListener("click", (e) => {
+        e.preventDefault();
+        console.log(i);
+
+        if (i > 3) {
+          i = i - 1;
+          document.getElementById("opt" + i).remove();
+        }
+      });
+
+    document.getElementById("clickLink").addEventListener("click", (e) => {
+      e.preventDefault();
+      var copyText = document.getElementById("quizLink");
+      copyText.select();
+      copyText.setSelectionRange(0, 99999);
+      document.execCommand("copy");
+      alert("Copied the text: " + copyText.value);
+    });
+
+    // const sub = document.querySelector('submit').addEventListener('submit', (e) => {
+    //   e.preventDefault();
+    //   const input = document.getElementById('name').value = "";
+    // })
+  </script>
+  <%- include('./partials/footer.ejs') %>
+</body>

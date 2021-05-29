@@ -1,0 +1,103 @@
+<!-- head -->
+<%- include('./partials/head.ejs') %>
+<body>
+  <%- include('./partials/nav.ejs') %>
+
+  <section style="margin-top: 100px">
+    <div class="container">
+      <h1 class="text-center">Sign Up</h1>
+
+      <form class="signup-form-main">
+        <div class="form-group pb-2">
+          <label for="username"><h6>Username</h6></label>
+          <input
+            type="text"
+            class="form-control form-control-lg"
+            id="username-main"
+            name="signupUsernameMain"
+          />
+          <div class="signup main username error"></div>
+        </div>
+
+        <div class="form-group pb-2">
+          <label for="email"><h6>Email</h6></label>
+          <input
+            type="email"
+            class="form-control form-control-lg"
+            id="signup-email-main"
+            name="signupEmailMain"
+            aria-describedby="emailHelp"
+          />
+        </div>
+        <div class="signup main email error"></div>
+
+        <div class="form-group py-2">
+          <label for="password"><h6>Password</h6></label>
+          <a href="/auth/requestResetPassword" style="float: right; font-size: 12px">Forgot password?</a>
+          <input
+            type="password"
+            class="form-control form-control-lg"
+            id="signup-password-main"
+            name="signupPasswordMain"
+          />
+        </div>
+        <div class="signup main password error"></div>
+        <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+
+        <div class="sign-up">
+          Already have an account? <a href="/login">Login here</a>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <script>
+    const signupFormMain = document.querySelector(".signup-form-main");
+    const signupUsernameErrorMain = document.querySelector(
+      ".signup.main.username.error"
+    );
+    const signupEmailErrorMain = document.querySelector(
+      ".signup.main.email.error"
+    );
+    const signupPasswordErrorMain = document.querySelector(
+      ".signup.main.password.error"
+    );
+
+    signupFormMain.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      // reset errors
+      signupUsernameErrorMain.textContent = "";
+      signupEmailErrorMain.textContent = "";
+      signupPasswordErrorMain.textContent = "";
+      // get values
+      const signupUsernameMain = signupFormMain.signupUsernameMain.value;
+      const signupEmailMain = signupFormMain.signupEmailMain.value;
+      const signupPasswordMain = signupFormMain.signupPasswordMain.value;
+      try {
+        const res = await fetch("/signup", {
+          method: "POST",
+          body: JSON.stringify({
+            username: signupUsernameMain,
+            email: signupEmailMain,
+            password: signupPasswordMain,
+          }),
+          headers: { "Content-Type": "application/json" },
+        });
+        const data = await res.json();
+        // console.log(data);
+        if (data.errors) {
+          signupUsernameErrorMain.textContent = data.errors.username;
+          signupEmailErrorMain.textContent = data.errors.email;
+          signupPasswordErrorMain.textContent = data.errors.password;
+        }
+        if (data.user) {
+          location.assign("/profile/avatars");
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    });
+  </script>
+
+  <%- include('./partials/footer.ejs') %>
+</body>

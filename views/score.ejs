@@ -1,0 +1,112 @@
+<!-- head -->
+<%- include('./partials/head.ejs') %>
+
+  <body class="quiz-main">
+
+    <nav
+    class="
+      navbar
+      fixed-top
+      navbar-expand-lg navbar-<%-
+      theme
+      %>
+      nav-fixed nav-class
+    "
+    style=
+  >
+    <div class="container">
+      <!-- <a class="navbar-brand" href="#"><h1>Multroic</h1></a> -->
+      <a class="navbar-brand" href="/">
+        <img
+          src="/assets/img/text-logo.svg"
+          width="80%"
+          class="d-inline-block align-top"
+          alt=""
+        />
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse text-center" id="navbarNav">
+        <div class="mx-auto"></div>
+        <ul class="navbar-nav" >
+          <li class="nav-item" style="padding: 8px 0px">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item" style="padding: 8px 0px">
+            <a class="nav-link" href="/games">Games</a>
+          </li>
+          <li class="nav-item" style="padding: 8px 0px">
+            <a class="nav-link" href="/about">About</a>
+          </li>
+          <li class="nav-item" style="padding: 8px 0px">
+            <a class="nav-link" href="/contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+    <section style="margin-top: 100px ">
+
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-7">
+            <div class="text-center" style="border-radius: 10px;">
+              <!-- question -->
+              <div class="question-style">
+                  <h1>Your Score Card</h1>
+              </div>
+              <div style="background: white; padding:20px; border-radius: 0px 0px 10px 10px;">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th colspan="2">
+                        
+                        <% if(username == "") { %>
+                          Hey, 
+                          <% } else { %>
+                            <%= username %>
+                        <% } %>
+                        your score is ready!</th>
+                    </tr>
+                    <tr>
+                      <th>Total Questions</th>
+                      <th>Your Score</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="success">
+                      <td><%= total %></td>
+                      <td><%= score %></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div>
+                  <a href="/quiz/play/<%= quizId %>" class="btn btn-warning pull-left"
+                    >Play Again</a
+                  >
+                  <a href="/" class="btn btn-success pull-left">Home</a>
+                  <a href="/quiz/<%= quizId %>/leaderboard" class="btn btn-primary pull-left"
+                    >LeaderBoard</a
+                  >
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </body>
+</html>

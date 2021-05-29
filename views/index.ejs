@@ -1,0 +1,88 @@
+<!-- head -->
+<%- include('./partials/head.ejs') %>
+
+<body>
+  <!-- main-section -->
+  <section class="main-section">
+    <%- include('./partials/nav.ejs') %>
+
+    <% if (user) { %>
+      <% if(!user.confirm) { %> 
+
+        <div class="container">
+          <div class="alert alert-danger alert-dismissible fade show" style="margin-top: 100px; position: absolute;" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+            <strong>Your account is not confirmed</strong> Please confirm your account <a href="/profile/<%= user.username %>">here.</a> 
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        </div>
+        
+        <% } %>
+
+      <% } %>
+
+    <div class="page-header">
+      <div class="container">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-md-5 main-text" style="padding: 20px !important">
+            <h2>Welcome to Multroic,<br />Create, Share and Play with your Friends!</h2>
+            <a href="/games" class="btn btn-main btn-light btn-block btn-lg"
+              >Play for Free!</a
+            >
+          </div>
+          <div class="col-md-5" style="padding: 20px">
+            <img src="/assets/img/q.svg" alt="" />
+          </div>
+        </div>
+      </div>
+      <img src="/assets/img/wave.svg" alt="" />
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-4">
+          <img class="features-img" src="/assets/img/create.png" alt="" />
+          <h2>Create</h2>
+          <p>
+            Create game sessions with user friendly interface.
+          </p>
+        </div>
+        <div class="col-md-4">
+          <img src="/assets/img/play.png" alt="" />
+          <h2>Play</h2>
+          <p>
+            Play games by sharing with your friends or play our built in game sessions.
+          </p>
+        </div>
+        <div class="col-md-4">
+          <img src="/assets/img/compete.png" alt="" />
+          <h2>Compete</h2>
+          <p>
+            Compete with your friends by sharing the sessions and challenging them.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const navbar = document.querySelector(".nav-fixed");
+    const link = document.querySelector(".nav-link");
+    window.onscroll = () => {
+      if (window.scrollY > 150) {
+        navbar.classList.add("nav-active");
+        navbar.classList.remove("navbar-dark");
+        navbar.classList.add("navbar-light");
+        // link.classList.remove('text-white');
+        link.classList.add("black-a");
+      } else {
+        navbar.classList.remove("nav-active");
+        navbar.classList.add("navbar-dark");
+      }
+    };
+  </script>
+
+  <%- include('./partials/footer.ejs') %>
+</body>

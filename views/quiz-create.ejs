@@ -1,0 +1,391 @@
+<!-- head -->
+<%- include('./partials/head.ejs') %>
+
+<body>
+  <!-- main-section -->
+  <%- include('./partials/nav.ejs') %>
+
+  <section style="margin-top: 100px">
+    <div class="container">
+      <h1 class="text-center">Create Quiz</h1>
+      <form action="/quiz" method="POST">
+
+        <div class="form-group">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6 p-2">
+                <label for="quizId">Quiz Creator</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="quizCreatorName"
+                  id="quizCreatorName"
+                  placeholder="Enter Quiz Creator"
+                  value="<%= user.username %>"
+                  readonly
+                  required
+                />
+              </div>
+              <div class="col-md-6 p-2">
+                <label for="username">Quiz Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="quizName" 
+                  id="quizName"
+                  placeholder="Enter Quiz Name"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+          <br>
+              <hr>
+          <div class="container" id="questions-div">
+            <div class="question" id="q1">
+              <div class="row">
+                <div class="col p-2">
+                  <label for="question1">Question 1</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="question1"
+                    name="question1"
+                    placeholder="Enter Question"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="row options">
+                <div class="col-md-6 p-2">
+                  <label for="op1">Option 1</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="op1"
+                    name="op1"
+                    placeholder="Enter Option 1"
+                    required
+                  />
+                </div>
+                <div class="col-md-6 p-2">
+                  <label for="op2">Option 2</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="op2"
+                    name="op2"
+                    placeholder="Enter Option 2"
+                    required
+                  />
+                </div>
+              </div>  
+              <div class="row">
+                <div class="col-md-6 p-2">
+                  <label for="correctOption1">Correct Option</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="correctOption1"
+                    name="correctOption1"
+                    placeholder="correctOption"
+                    required
+                  />
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col">
+                  <button type="button" id="addOptionBtn" class="btn btn-success" onclick="createOption(1)">
+                    Add Option
+                  </button>
+    
+                  <button type="button" id="deleteOptionBtn" class="btn btn-danger" onclick="deleteOption(1)">
+                    Remove Option
+                  </button>
+                  
+                </div>
+              </div>
+              <br>
+              <hr>
+
+            </div>
+            
+          </div>
+
+          <button type="button" id="addQuestionBtn" class="btn btn-success" onclick="createQuestion()">
+            Add Question
+          </button>
+          <button type="button" id="addQuestionBtn" class="btn btn-danger" onclick="deleteQuestion()">
+            Remove Question
+          </button>
+          <br>
+          <br>
+          <input type="text" name="mainBuffer" id="mainBuffer" readonly style="display: none;">
+          <button type="submit" class="btn btn-primary" onclick="validateField(event)">Submit</button>
+          
+<!--           
+          <div class="row">
+            
+          </div> -->
+      </form>
+    </div>
+  </section>
+  <script>
+
+
+
+const createOption = (questionId) => {
+       
+        const optionId = document.querySelectorAll(`#q${questionId} .options input`).length + 1
+
+        // <!--<label for="op${optionId}">Option ${optionId}</label> -->
+        const newOptiontemp1 = `
+        <div id="tOpt" class="col-md-6 p-2 tOpt${optionId}">
+                  <label for="op${optionId}">Option ${optionId}</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="op${optionId}"
+                    name="op${optionId}"
+                    placeholder="Enter Option ${optionId}"
+                    required
+                  />
+                </div>
+                
+        `;
+        // const newOptiontemp2 = `<input type="text" name=option${optionId} id="op2">`;
+
+
+
+        var parser = new DOMParser()
+	    var doc = parser.parseFromString(newOptiontemp1, 'text/html')
+        document.querySelector(`#q${questionId} .options`).appendChild(doc.body.childNodes[0])
+
+	    // var doc1 = parser.parseFromString(newOptiontemp2, 'text/html')
+      //   document.querySelector(`#q${questionId} .options`).appendChild(doc1.body.childNodes[0])
+        
+
+
+    }
+
+    const deleteOption = (questionId) => {
+
+      var len = document.querySelector(`#q${questionId} .options`).childNodes.length
+
+       if(len > 5)
+       {
+        document.querySelector(`#q${questionId} .options`).lastElementChild.remove()
+       }
+   }
+
+    const createQuestion = () => {
+        const noOfQuestions = document.querySelectorAll(".question").length
+        const newQuestionIndex = noOfQuestions + 1;
+        const newQuestion = `
+
+
+        <div class="question" id="q${newQuestionIndex}">
+              <div class="row">
+                <div class="col p-2">
+                  <label for="question${newQuestionIndex}">Question ${newQuestionIndex}</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="question${newQuestionIndex}"
+                    name="question${newQuestionIndex}"
+                    placeholder="Enter Question"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="row options">
+                <div class="col-md-6 p-2">
+                  <label for="op1">Option 1</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="op1"
+                    name="op1"
+                    placeholder="Enter Option 1"
+                    required
+                  />
+                </div>
+                <div class="col-md-6 p-2">
+                  <label for="op2">Option 2</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="op2"
+                    name="op2"
+                    placeholder="Enter Option 2"
+                    required
+                  />
+                </div>
+              </div>  
+              <div class="row">
+                <div class="col-md-6 p-2">
+                  <label for="correctOption${newQuestionIndex}">Correct Option</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="correctOption${newQuestionIndex}"
+                    name="correctOption${newQuestionIndex}"
+                    placeholder="correctOption"
+                    required
+                  />
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col">
+                  <button type="button" id="addOptionBtn" class="btn btn-success" onclick="createOption(${newQuestionIndex})">
+                    Add Option
+                  </button>
+    
+                  <button type="button" id="deleteOptionBtn" class="btn btn-danger" onclick="deleteOption(${newQuestionIndex})">
+                    Remove Option
+                  </button>
+                  
+                </div>
+              </div>
+              <br>
+              <hr>
+            </div>
+
+
+            
+        `;
+        var parser = new DOMParser();
+	    var doc = parser.parseFromString(newQuestion, 'text/html');
+        document.querySelector("#questions-div").appendChild(doc.body.childNodes[0])
+    }
+
+    const deleteQuestion = () => {
+
+      const qlen = document.getElementById("questions-div").childNodes.length
+        // const newQuestionIndex = noOfQuestions + 1;
+      // console.log(qlen)
+// var len = document.querySelector(`#q${questionId} .options`).childNodes.length
+
+ if(qlen > 3)
+ {
+  document.getElementById("questions-div").lastElementChild.remove()
+  // document.querySelector(`#q${questionId} .options`).lastElementChild.remove()
+ }
+}
+
+    const validateField = (event) => {
+
+        var json = document.createElement("p");
+
+
+        var error = false;
+        var form = document.querySelector("form")
+        var quizName = document.querySelector("#quizName").value;
+        var quizCreatorName = document.querySelector("#quizCreatorName").value;
+        // var question = document.querySelector("#question1").value;
+        // var op1 = document.querySelector("#op1").value;
+        // var op2 = document.querySelector("#op2").value;
+        // var Cop = document.querySelector("#correct").value;
+        /* */
+        // var sendingBuffer = {
+        //     quizName: quizName,
+        //     quizCreaterName: quizCreaterName,
+        //     questions: [
+        //         { question: question, options: [op1, op2], correctOption: Cop }
+        //     ]
+        // }
+        var sendingBuffer = {
+            quizName: quizName,
+            quizCreatorName: quizCreatorName,
+            questions: [],
+        }
+       
+        const noOfQuestions = document.querySelectorAll(".question").length
+        for (var i = 0; i < noOfQuestions; i++) {
+            var questionObject = {}
+            var currentQuestionDiv = document.querySelectorAll(".question")[i];
+            console.log(i)
+            const questionName = currentQuestionDiv.querySelector(`#question${i+1}`).value
+            console.log(questionName)
+            var options = []
+            const numberOfOptions = document.querySelectorAll(`#q${i+1} .options input`).length
+            for (var j = 0; j < numberOfOptions; j++) {
+                const currentOption = document.querySelectorAll(`#q${i+1} .options input`)[j].value
+                options.push(currentOption)
+            }
+
+            const correctOption = currentQuestionDiv.querySelector(`#correctOption${i+1}`).value
+            console.log(correctOption)
+
+            questionObject.questionName = questionName
+            questionObject.options = options
+            questionObject.correctOption = correctOption 
+            // document.querySelector("#jsonObj").innerHTML = JSON.stringify(sendingBuffer)
+            sendingBuffer.questions.push(questionObject)
+        }
+        console.log(sendingBuffer)
+        var mainBuffer = document.getElementById('mainBuffer').value = JSON.stringify(sendingBuffer)
+        document.querySelector("#jsonObj").innerHTML = JSON.stringify(sendingBuffer)
+        // form.submit();
+
+        console.log(sendingBuffer);
+
+    }
+    // i = 3;
+    // document.getElementById("add_field_btn").addEventListener("click", (e) => {
+    //   e.preventDefault();
+
+    //   const row = document.createElement("div");
+    //   const col = document.createElement("div");
+    //   const label = document.createElement("label");
+    //   const input = document.createElement("input");
+
+    //   label.setAttribute("for", "option" + i);
+    //   label.innerHTML = "Option " + i;
+    //   col.classList.add("col-md-6", "p-2", "option" + i);
+    //   col.setAttribute("id", "opt" + i);
+    //   row.classList.add("row");
+    //   input.setAttribute("type", "text");
+    //   input.setAttribute("name", "[options]");
+    //   input.setAttribute("id", "option" + i);
+    //   input.setAttribute("placeholder", "Enter Option " + i);
+    //   input.classList.add("form-control");
+
+    //   col.appendChild(label);
+    //   col.appendChild(input);
+    //   // row.appendChild(col)
+
+    //   document.getElementById("options-container").appendChild(col);
+    //   i++;
+    // });
+
+    // document
+    //   .getElementById("remove_field_btn")
+    //   .addEventListener("click", (e) => {
+    //     e.preventDefault();
+    //     console.log(i);
+
+    //     if (i > 3) {
+    //       i = i - 1;
+    //       document.getElementById("opt" + i).remove();
+    //     }
+    //   });
+
+    // document.getElementById("clickLink").addEventListener("click", (e) => {
+    //   e.preventDefault();
+    //   var copyText = document.getElementById("quizLink");
+    //   copyText.select();
+    //   copyText.setSelectionRange(0, 99999);
+    //   document.execCommand("copy");
+    //   alert("Copied the text: " + copyText.value);
+    // });
+
+    // const sub = document.querySelector('submit').addEventListener('submit', (e) => {
+    //   e.preventDefault();
+    //   const input = document.getElementById('name').value = "";
+    // })
+  </script>
+  <%- include('./partials/footer.ejs') %>
+</body>

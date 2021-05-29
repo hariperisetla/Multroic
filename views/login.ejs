@@ -1,0 +1,76 @@
+<!-- head -->
+<%- include('./partials/head.ejs') %>
+<body>
+  <%- include('./partials/nav.ejs') %>
+
+  <section style="margin-top: 100px">
+    <div class="container">
+      <h1 class="text-center">Login</h1>
+      <form class="login-form-main">
+        <div class="form-group pb-2">
+          <label for="email"><h6>Email</h6></label>
+          <input
+            type="email"
+            class="form-control form-control-lg"
+            id="email-main"
+            name="emailMain"
+            aria-describedby="emailHelp"
+          />
+        </div>
+        <div class="email main error"></div>
+        <div class="form-group py-2">
+          <label for="password"><h6>Password</h6></label>
+          <a href="/auth/requestResetPassword" style="float: right; font-size: 12px">Forgot password?</a>
+          <input
+            type="password"
+            class="form-control form-control-lg"
+            id="password-main"
+            name="passwordMain"
+          />
+        </div>
+        <div class="password main error"></div>
+        <button type="submit" class="btn btn-primary btn-block">Log in</button>
+
+        <div class="sign-up">
+          Don't have an account? <a href="/signup">Create Account</a>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <script>
+    const formMain = document.querySelector(".login-form-main");
+    const emailErrorMain = document.querySelector(".email.main.error");
+    const passwordErrorMain = document.querySelector(".password.main.error");
+
+    formMain.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      // reset errors
+      emailErrorMain.textContent = "";
+      passwordErrorMain.textContent = "";
+      // get values
+      const emailMain = formMain.emailMain.value;
+      const passwordMain = formMain.passwordMain.value;
+      try {
+        const res = await fetch("/login", {
+          method: "POST",
+          body: JSON.stringify({ email: emailMain, password: passwordMain }),
+          headers: { "Content-Type": "application/json" },
+        });
+        const data = await res.json();
+        // console.log(data);
+        if (data.errors) {
+          emailErrorMain.textContent = data.errors.email;
+          passwordErrorMain.textContent = data.errors.password;
+        }
+        if (data.user) {
+          location.assign("/");
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    });
+  </script>
+
+<%- include('./partials/footer.ejs') %>
+</body>

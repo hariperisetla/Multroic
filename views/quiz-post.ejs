@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<style>
+
+
+</style>
+<body>
+
+    <form action="/quiz" method="post" class="my-form container">
+        <p>quiz name</p>
+        <input type="text" name="quizName" id="quizName">
+        <br>
+        <p>quiz creator </p>
+        <input type="text" name="quizCreatorName" id="quizCreatorName">
+        <br>
+        <div id="questions-div" class="container">
+            <div id="q1" class = "question">
+
+                <label for="question1">Question 1</label>
+                <input type="text" name="question1" id="question1">
+                <br>
+                <div class="options">
+                    
+
+                        <label for="op1">Option 1</label>
+                        <input type="text" name="op1" id="op1">
+                        <label for="correctOp1">Test</label>
+                        <!-- <input type="radio" value="1" name="correctOp1"> -->
+                        <br>
+                        <label for="op2">Option 2</label>
+                        <input type="text" name="op2" id="op2" >
+
+                        <label for="correctOp1">Test</label>
+                        <!-- <input type="radio" value="1" id="op2" name="correctOp1"> -->
+                        
+                        
+                        <br>
+                    
+
+                </div>
+
+                <p>correct option</p>
+                <input type="text" name="correctOption1" id="correctOption1" >
+
+                <button id="addOptionBtn" onclick="createOption(1)" type = "button">Add Option</button>
+                
+            </div>
+        </div>
+        
+
+
+        <br>
+        </div>
+        <br>
+        <button type="button" onclick="createQuestion()">Add question</button>
+        </div>
+        <input type="text" name="mainBuffer" id="mainBuffer" readonly>
+        <button onclick="validateField(event)">Submit</button>
+
+    </form>
+
+    <p id="jsonObj"></p>
+</body>
+<script>
+
+
+    // document.getElementById('addOptionBtn').addEventListener('click', (e) => {
+    //     e.preventDefault();
+    //     // console.log('Clicked');
+    //     var options = document.getElementsByClassName('options')
+    // })
+    const createOption = (questionId) => {
+        const optionId = document.querySelectorAll(`#q${questionId} .options input`).length + 1
+
+        const newOptiontemp1 = `
+                <label for="op${optionId}">Option ${optionId}</label>
+        `;
+        const newOptiontemp2 = `<input type="text" name=option${optionId} id="op2">`;
+
+
+
+        var parser = new DOMParser()
+	    var doc = parser.parseFromString(newOptiontemp1, 'text/html')
+        document.querySelector(`#q${questionId} .options`).appendChild(doc.body.childNodes[0])
+
+	    var doc1 = parser.parseFromString(newOptiontemp2, 'text/html')
+        document.querySelector(`#q${questionId} .options`).appendChild(doc1.body.childNodes[0])
+        
+
+
+    }
+
+    const createQuestion = () => {
+        const noOfQuestions = document.querySelectorAll(".question").length
+        const newQuestionIndex = noOfQuestions + 1;
+        const newQuestion = `
+            <div id="q${newQuestionIndex}" class = "question">
+            <label for="question1">Question ${newQuestionIndex}</label>
+            <input type="text" name="question${newQuestionIndex}" id="question${newQuestionIndex}">
+            <br>
+            <div class="options">
+                <label for="op1">Option 1</label>
+                <input type="text" name="op1" id="op1">
+                <label for="op2">Option 2</label>
+                <input type="text" name="op2" id="op2">
+            </div>
+            
+            <p>correct option</p>
+                <input type="text" name="correctOption${newQuestionIndex}" id="correctOption${newQuestionIndex}" >
+
+            <button id="addOptionBtn" onclick="createOption(${newQuestionIndex})" type = "button">Add Option</button>
+            
+            
+            </div>
+        `;
+        var parser = new DOMParser();
+	    var doc = parser.parseFromString(newQuestion, 'text/html');
+        document.querySelector("#questions-div").appendChild(doc.body.childNodes[0])
+    }
+    const validateField = (event) => {
+
+        var json = document.createElement("p");
+
+
+        var error = false;
+        var form = document.querySelector("form")
+        var quizName = document.querySelector("#quizName").value;
+        var quizCreatorName = document.querySelector("#quizCreatorName").value;
+        // var question = document.querySelector("#question1").value;
+        // var op1 = document.querySelector("#op1").value;
+        // var op2 = document.querySelector("#op2").value;
+        // var Cop = document.querySelector("#correct").value;
+        /* */
+        // var sendingBuffer = {
+        //     quizName: quizName,
+        //     quizCreaterName: quizCreaterName,
+        //     questions: [
+        //         { question: question, options: [op1, op2], correctOption: Cop }
+        //     ]
+        // }
+        var sendingBuffer = {
+            quizName: quizName,
+            quizCreatorName: quizCreatorName,
+            questions: [],
+        }
+       
+        const noOfQuestions = document.querySelectorAll(".question").length
+        for (var i = 0; i < noOfQuestions; i++) {
+            var questionObject = {}
+            var currentQuestionDiv = document.querySelectorAll(".question")[i];
+            console.log(i)
+            const questionName = currentQuestionDiv.querySelector(`#question${i+1}`).value
+            console.log(questionName)
+            var options = []
+            const numberOfOptions = document.querySelectorAll(`#q${i+1} .options input`).length
+            for (var j = 0; j < numberOfOptions; j++) {
+                const currentOption = document.querySelectorAll(`#q${i+1} .options input`)[j].value
+                options.push(currentOption)
+            }
+
+            const correctOption = currentQuestionDiv.querySelector(`#correctOption${i+1}`).value
+            console.log(correctOption)
+
+            questionObject.questionName = questionName
+            questionObject.options = options
+            questionObject.correctOption = correctOption 
+            // document.querySelector("#jsonObj").innerHTML = JSON.stringify(sendingBuffer)
+            sendingBuffer.questions.push(questionObject)
+        }
+        console.log(sendingBuffer)
+        var mainBuffer = document.getElementById('mainBuffer').value = JSON.stringify(sendingBuffer)
+        document.querySelector("#jsonObj").innerHTML = JSON.stringify(sendingBuffer)
+        // form.submit();
+
+        console.log(sendingBuffer);
+
+    }
+
+    // const test1 = (optionValue) => {
+    //     var option = document.createElement('option');
+    //     option.setAttribute('value', optionValue);
+    //     option.innerHTML = optionValue;
+
+    //     document.getElementById('cars').appendChild(option);
+
+    // }
+
+    // const test = (questionId) => {
+    //     // var option = document.createElement('option');
+    //     // option.setAttribute('value', 'Car');
+    //     // option.innerHTML = "Car";
+    //     const numberOfOptions = document.querySelectorAll(`#q${questionId} .options input`).length
+    //     options = []
+    //     document.getElementById('cars').innerHTML = ""
+    //     test1("Select option")
+    //     // const initial = `<option value="Select" selected>Select Correct Option</option>`;
+    //     // var parser = new DOMParser()
+	//     // var doc = parser.parseFromString(initial, 'text/html')
+    //     // document.querySelector("#cars").appendChild(doc.body.childNodes[0])
+    //     for (var j = 0; j < numberOfOptions; j++) {
+    //         const currentOption = document.querySelectorAll(`#q${questionId} .options input`)[j].value
+    //         options.push(currentOption)
+    //     }
+    //     for (var i = 0; i < options.length; i++) {
+    //         test1(options[i])
+    //     }
+    // }
+
+    // const executeThis = () => {
+    //     var select = document.getElementById("cars");
+    //     alert(select.options.length)
+    //     for (var i = 0; i < select.options.length; i++) {
+    //         select.options[i].defaultSelected = i == select.selectedIndex;
+    //     }
+    // }
+
+</script>
+
+</html>
