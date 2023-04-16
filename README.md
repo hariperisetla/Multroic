@@ -1,59 +1,38 @@
-# Multroic
-
-Multroic is a shared gaming website that showcases open source gaming projects on one platform. The platform brings together game developers and gamers from all over the world to explore, collaborate, and showcase their work.
-
-This project was developed by Hari Perisetla, Adarsh C, and Umakanth P.
-
-## Features
-
-- Connect with other game developers and gain valuable feedback from the community
-- Showcase your open source game projects to a wider audience
-- Discover new and exciting open source games and contribute to your favorite projects
-- User-friendly interface with easy navigation and search functionalities
-- Dedicated project pages with detailed project information, screenshots, and links to the source code
-- Commenting and discussion functionalities
-- User account creation and project submission
-
-## Usage
-
-Once you have installed Multroic, you can start discovering and playing open source games showcased on the platform. Simply browse through the different topics or categories to find a game that interests you.
-
-If you want to play a game, simply click on the game's page to access more information about it, including screenshots and links to the source code. You can either play the game directly in your browser or download it based on the requirements set by the author.
-
-Whether you're a gamer or a game developer, Multroic provides a unique platform for exploring, collaborating, and showcasing open source gaming projects.
-
-## Technologies
-
-Multroic is built with the following technologies:
-
-- React
-- Node.js
-- MongoDB
-- Express.js
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
-To get started with Multroic, follow these steps:
+First, run the development server:
 
-1. Clone the repository to your local machine: `git clone https://github.com/hariperisetla/multroic.git`
-2. Install dependencies: `npm install`
-3. Start the development server: `npm start`
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+```
 
-Alternatively, you can also visit the website and create an account. Once you have an account, you can explore the platform and discover new open source games. You can also submit your own projects to be showcased on the platform.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-## Contributing
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
 
-We welcome contributions from the gaming community. If you would like to contribute to Multroic, please feel free to submit a pull request.
+The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-## Authors
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-<a href="https://github.com/hariperisetla/" target="_blank"><img src="https://github.com/hariperisetla.png" width="10%"></a>
-<a href="https://github.com/ad-arsh99/" target="_blank"><img src="https://github.com/ad-arsh99.png" 
-width="10%"></a>
-<a href="https://github.com/umakanth-pendyala/" target="_blank"><img src="https://github.com/umakanth-pendyala.png" 
-width="10%"></a>
+## Learn More
 
-## License
+To learn more about Next.js, take a look at the following resources:
 
-Multroic is open source software licensed under the MIT License.
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
