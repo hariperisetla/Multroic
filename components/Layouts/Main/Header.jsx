@@ -3,7 +3,7 @@ import React from "react";
 
 const Header = () => {
   return (
-    <header className="flex justify-between py-3 px-10 fixed bg-white w-full">
+    <header className="z-20 flex justify-between py-3 px-10 fixed bg-white w-full">
       <Link href={"/"} className="text-3xl font-extrabold text-purple-950">
         Multroic
       </Link>
