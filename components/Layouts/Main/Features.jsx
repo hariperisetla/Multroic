@@ -1,0 +1,37 @@
+import React from "react";
+import Image from "next/image";
+import { PlayImg, CreateImg, CollaborateImg } from "@/assets/img/Img";
+import FeaturesData from "../../../data/main/features.json";
+
+const Features = () => {
+  return (
+    <section className="my-24 space-y-10">
+      <h1 className="font-extrabold text-4xl text-purple-950 text-center">
+        Features of Multroic
+      </h1>
+      <div className="container grid grid-cols-3 gap-10 mx-auto text-center">
+        {FeaturesData.map((feature) => (
+          <div
+            key={feature.id}
+            className="bg-purple-100 p-5 shadow hover:shadow-lg space-y-2 py-12"
+          >
+            <div className="relative w-full h-80">
+              <Image
+                src={feature.img}
+                alt="create image"
+                fill
+                className="object-contain object-center"
+              />
+            </div>
+            <h4 className="font-extrabold text-2xl text-purple-950 pt-5 capitalize">
+              {feature.name}
+            </h4>
+            <p className="font-medium text-purple-900">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};
+
+export default Features;

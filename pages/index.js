@@ -1,6 +1,10 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import Gaming from "../assets/img/gaming.svg";
+import CreateImg from "../assets/img/create.svg";
+import PlayImg from "../assets/img/play.svg";
+import CollaborateImg from "../assets/img/collaborate.svg";
+import Features from "@/components/Layouts/Main/Features";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,39 +37,7 @@ const Home = () => {
         </div>
       </div>
 
-      <section className="my-24 space-y-10">
-        <h1 className="font-extrabold text-4xl text-purple-950 text-center">
-          Features of Multroic
-        </h1>
-        <div className="container grid grid-cols-3 gap-10 mx-auto">
-          <div className="bg-purple-100 p-5 shadow hover:shadow-lg space-y-2">
-            <h4 className="font-extrabold text-2xl text-purple-950">Create</h4>
-            <p className="font-medium text-purple-900">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe,
-              blanditiis animi quod fugiat dolore eos fuga ipsam voluptate
-              reiciendis hic.
-            </p>
-          </div>
-          <div className="bg-purple-100 p-5 shadow hover:shadow-lg space-y-2">
-            <h4 className="font-extrabold text-2xl text-purple-950">Play</h4>
-            <p className="font-medium text-purple-900">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe,
-              blanditiis animi quod fugiat dolore eos fuga ipsam voluptate
-              reiciendis hic.
-            </p>
-          </div>
-          <div className="bg-purple-100 p-5 shadow hover:shadow-lg space-y-2">
-            <h4 className="font-extrabold text-2xl text-purple-950">
-              Collaborate
-            </h4>
-            <p className="font-medium text-purple-900">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe,
-              blanditiis animi quod fugiat dolore eos fuga ipsam voluptate
-              reiciendis hic.
-            </p>
-          </div>
-        </div>
-      </section>
+      <Features />
     </main>
   );
 };
