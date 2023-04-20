@@ -7,15 +7,21 @@ const Header = () => {
       <Link href={"/"} className="text-3xl font-extrabold text-purple-950">
         Multroic
       </Link>
-      <ul className="flex space-x-3 font-bold text-xl text-purple-950">
+      <ul className="flex space-x-8 font-bold text-xl text-purple-950">
         <li>
           <Link href={"/"}>About</Link>
         </li>
         <li>
-          <Link href={"/"}>Play</Link>
+          <Link href={"/"}>Games</Link>
+        </li>
+        <li>
+          <Link href={"/"}>Developers</Link>
         </li>
         <li>
           <Link href={"/"}>Contact</Link>
+        </li>
+        <li>
+          <Link href={"/"}>Blog</Link>
         </li>
       </ul>
     </header>
