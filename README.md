@@ -35,8 +35,8 @@ To run the project locally, please follow the steps below:
 
 1. Clone the repository to your local machine: `git clone https://github.com/hariperisetla/multroic.git`
 2. Navigate to the project directory: `cd multroic`
-2. Install dependencies: `npm install`
-3. Start the development server: `npm run dev`
+3. Install dependencies: `npm install`
+4. Start the development server: `npm run dev`
 
 Alternatively, you can also visit the website and create an account. Once you have an account, you can explore the platform and discover new open source games. You can also submit your own projects to be showcased on the platform.
 
