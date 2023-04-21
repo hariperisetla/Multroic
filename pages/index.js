@@ -11,10 +11,10 @@ const inter = Inter({ subsets: ["latin"] });
 const Home = () => {
   return (
     <main className="">
-      <div className="bg-purple-100 h-[80vh] pt-16 items-center">
-        <div className="container px-16 mx-auto grid h-full grid-cols-2 gap-10 items-center">
-          <div className=" space-y-3">
-            <h1 className="text-6xl font-montserrat font-extrabold leading-tight text-purple-950">
+      <div className="bg-purple-100 h-[100vh] md:h-[80vh] pt-16 items-center">
+        <div className="container px-5 pt-10 md:pt-0 md:px-16 mx-auto grid h-full grid-cols-1 md:grid-cols-2 md:gap-10 items-center">
+          <div className="space-y-3">
+            <h1 className="text-4xl md:text-6xl font-montserrat font-extrabold leading-tight text-purple-950">
               Discover and Play Open-Source Games
             </h1>
             <p className="font-medium text-xl text-purple-900 text-justify">
@@ -26,7 +26,7 @@ const Home = () => {
               Get Started
             </button>
           </div>
-          <div className="relative w-full h-[60vh]">
+          <div className="relative w-full h-80 md:h-[60vh]">
             <Image
               src={Gaming}
               alt="gaming vector image"
