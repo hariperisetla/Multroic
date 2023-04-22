@@ -51,7 +51,3 @@ We welcome contributions from the gaming community. If you would like to contrib
 width="10%"></a>
 <a href="https://github.com/umakanth-pendyala/" target="_blank"><img src="https://github.com/umakanth-pendyala.png" 
 width="10%"></a>
-
-## License
-
-Multroic is open source software licensed under the MIT License.
