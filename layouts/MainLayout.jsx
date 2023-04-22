@@ -5,7 +5,7 @@ const MainLayout = ({ children }) => {
   return (
     <>
       <Header />
-      {children}
+      <main className="pt-16">{children}</main>
       <Footer />
     </>
   );
