@@ -15,7 +15,10 @@ const About = () => {
         {aboutContent.map((content) => (
           <div key={content.id}>
             {content.id % 2 === 0 ? (
-              <div key={content.id} className="grid grid-cols-2 gap-10">
+              <div
+                key={content.id}
+                className="grid grid-cols-1 md:grid-cols-2 gap-10"
+              >
                 <AboutImage
                   img={content.img}
                   imgAuthor={content.imgAuthor}
@@ -28,7 +31,10 @@ const About = () => {
                 </div>
               </div>
             ) : (
-              <div key={content.id} className="grid grid-cols-2 gap-10">
+              <div
+                key={content.id}
+                className="grid grid-cols-1 md:grid-cols-2 gap-10"
+              >
                 <div className="space-y-5">
                   <h3 className="text-3xl font-bold">{content.title}</h3>
                   <p>{content.description}</p>
