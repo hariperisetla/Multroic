@@ -19,7 +19,7 @@ const Home = () => {
             </h1>
             <p className="font-medium text-xl text-purple-900 text-justify">
               Join our community of developers and gamers to explore a variety
-              of games in your browser or download them to play on your device
+              of games in your browser or download them to play on your device!
             </p>
 
             <button className="bg-purple-950 text-white px-5 py-3 text-xl font-bold">
