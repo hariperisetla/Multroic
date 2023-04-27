@@ -1,15 +1,35 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { FullLogoImg } from "@/assets/img/Img";
-import { GiHamburgerMenu } from "@/assets/icons/index";
+import { GiHamburgerMenu, IoCloseSharp } from "@/assets/icons/index";
 
 const Header = () => {
   const menu = ["about", "blog", "games", "developers", "contact"];
 
+  const [nav, setNav] = useState(false);
+
+  const handleNav = () => {
+    setNav(!nav);
+  };
+
+  const handleResize = () => {
+    if (window.innerWidth < 768) {
+      setNav(!nav);
+    } else return;
+  };
+
   return (
-    <header className="z-20 flex justify-between py-3 px-5 md:px-10 fixed bg-white w-full shadow items-center">
-      <Link href={"/"} className="text-3xl font-extrabold  text-purple-950">
+    <header
+      className={
+        "z-20 flex justify-between py-3 px-5 md:px-10 fixed bg-white w-full shadow items-center flex-wrap duration-500"
+      }
+    >
+      <Link
+        href={"/"}
+        className="text-3xl font-extrabold  text-purple-950"
+        onClick={handleResize}
+      >
         <div className="relative w-64 h-7 my-2">
           <Image
             src={FullLogoImg}
@@ -20,13 +40,27 @@ const Header = () => {
         </div>
       </Link>
 
-      <div className="md:hidden flex">
-        <GiHamburgerMenu size={25} className="text-purple-950" />
+      <div className="md:hidden flex" onClick={handleNav}>
+        {nav ? (
+          <IoCloseSharp size={30} className="text-purple-950" />
+        ) : (
+          <GiHamburgerMenu size={25} className="text-purple-950" />
+        )}
       </div>
 
-      <ul className="hidden md:flex space-x-8 font-bold text-xl text-purple-950">
+      <ul
+        className={
+          nav
+            ? "duration-500 w-full space-y-5 text-xl font-bold text-purple-950 py-5"
+            : "hidden duration-500 md:flex space-x-8 space-y-2 font-bold text-xl text-purple-950"
+        }
+      >
         {menu.map((page) => (
-          <li key={page}>
+          <li
+            key={page}
+            className="border-b-2 border-b-purple-100 md:border-none"
+            onClick={handleResize}
+          >
             <Link href={page} className="capitalize">
               {page}
             </Link>
