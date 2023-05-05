@@ -3,7 +3,6 @@ import Link from "next/link";
 import Image from "next/image";
 
 const AboutImage = ({ img, imgAuthor, imgAuthorLink, side }) => {
-  console.log(imgAuthor, imgAuthorLink);
   return (
     <div>
       <div className="w-full h-96 relative">
@@ -14,7 +13,11 @@ const AboutImage = ({ img, imgAuthor, imgAuthorLink, side }) => {
           className="object-cover "
         />
       </div>
-      <p className={`text-base pt-3 text-${side}`}>
+      <p
+        className={`text-base pt-3 ${
+          side === "left" ? "text-left" : "text-right"
+        }`}
+      >
         Photo by{" "}
         <Link className="underline font-bold" href={imgAuthorLink}>
           {imgAuthor}

@@ -52,7 +52,7 @@ const Header = () => {
         className={
           nav
             ? "duration-500 w-full space-y-5 text-xl font-bold text-purple-950 py-5"
-            : "hidden duration-500 md:flex space-x-8 space-y-2 font-bold text-xl text-purple-950"
+            : "hidden duration-500 md:flex items-center md:space-y-0 space-x-8 space-y-2 font-semibold text-lg text-purple-950"
         }
       >
         {menu.map((page) => (
