@@ -3,8 +3,8 @@ import { AboutImg1 } from "@/assets/img/Img";
 import Image from "next/image";
 import Link from "next/link";
 import aboutContent from "../data/main/about.json";
-import { AboutImage } from "@/components/Layouts/main/about";
-import AboutContent from "@/components/Layouts/main/about/AboutContent";
+import { AboutImage } from "@/components/about";
+import AboutContent from "@/components/about/AboutContent";
 
 const About = () => {
   return (

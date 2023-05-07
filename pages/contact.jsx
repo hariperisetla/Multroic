@@ -1,5 +1,5 @@
-import Faqs from "@/components/Layouts/main/contact/Faqs";
-import ContactForm from "@/components/Layouts/main/contact/Form";
+import ContactForm from "@/components/contact/Form";
+import Faqs from "@/components/contact/Faqs";
 import React from "react";
 
 const Contact = () => {

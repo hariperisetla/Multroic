@@ -1,4 +1,4 @@
-import GameCard from "@/components/Layouts/main/games/GameCard";
+import GameCard from "@/components/games/GameCard";
 import Image from "next/image";
 import React from "react";
 import gameContent from "../data/main/games.json";

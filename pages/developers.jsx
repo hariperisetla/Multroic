@@ -1,4 +1,4 @@
-import DeveloperCard from "@/components/Layouts/main/developers/DeveloperCard";
+import DeveloperCard from "@/components/developers/DeveloperCard";
 import React from "react";
 
 const Developers = () => {

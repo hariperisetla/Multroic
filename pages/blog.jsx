@@ -1,4 +1,4 @@
-import BlogPosts from "@/components/Layouts/main/blog/BlogPosts";
+import BlogPosts from "@/components/blog/BlogPosts";
 import Link from "next/link";
 import React from "react";
 
