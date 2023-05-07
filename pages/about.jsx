@@ -3,13 +3,13 @@ import { AboutImg1 } from "@/assets/img/Img";
 import Image from "next/image";
 import Link from "next/link";
 import aboutContent from "../data/main/about.json";
-import { AboutImage } from "@/components/Layouts/Main/About";
-import AboutContent from "@/components/Layouts/Main/About/AboutContent";
+import { AboutImage } from "@/components/Layouts/main/about";
+import AboutContent from "@/components/Layouts/main/about/AboutContent";
 
 const About = () => {
   return (
     <div className="mb-10">
-      <h1 className="text-3xl font-extrabold py-5 text-center text-purple-950">
+      <h1 className="text-3xl font-extrabold py-10 text-center text-purple-950">
         About Multroic
       </h1>
       <div className="container max-w-7xl mx-auto leading-loose font-medium text-justify space-y-24 text-xl px-5">
