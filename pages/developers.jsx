@@ -1,4 +1,4 @@
-import DeveloperCard from "@/components/developers/DeveloperCard";
+import DeveloperCard from "@/components/main/developers/DeveloperCard";
 import React from "react";
 
 const Developers = () => {

@@ -1,18 +1,18 @@
 import Link from "next/link";
 import React from "react";
 import Image from "next/image";
-import { FullLogoWhiteImg } from "@/assets/img/Img";
+import { FullLogoGradientImg, FullLogoWhiteImg } from "@/assets/img/Img";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="w-full bottom-0 bg-secondary text-white flex flex-col items-center justify-center pt-10 bg-purple-900">
+    <footer className="bottom-0 text-white flex flex-col items-center justify-center pt-10 border-t w-full mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-4 max-w-6xl p-10 md:p-20 space-y-10 md:space-y-0 md:space-x-20">
         <div className="text-center md:text-left w-full flex flex-col justify-center">
           <div className="relative w-full md:w-64 h-7 mb-3">
             <Image
-              src={FullLogoWhiteImg}
+              src={FullLogoGradientImg}
               fill
               alt="multroic logo"
               className="object-contain object-center md:object-left"
@@ -31,7 +31,9 @@ const Footer = () => {
         </div>
         <div className="text-center md:text-left">
           <ul className="capitalize space-y-3">
-            <li className="uppercase font-bold">site links</li>
+            <li className="uppercase font-extrabold bg-custom-gradient text-transparent bg-clip-text">
+              site links
+            </li>
             <li>about</li>
             <li>games</li>
             <li>developers</li>
@@ -41,7 +43,9 @@ const Footer = () => {
         </div>
         <div className="text-center md:text-left">
           <ul className="capitalize space-y-3">
-            <li className="uppercase font-bold">legal</li>
+            <li className="uppercase font-extrabold bg-custom-gradient text-transparent bg-clip-text">
+              legal
+            </li>
             <li>terms</li>
             <li>privacy policy</li>
             <li>terms of use</li>
@@ -50,7 +54,9 @@ const Footer = () => {
         </div>
         <div className="text-center md:text-left">
           <ul className="capitalize space-y-3">
-            <li className="uppercase font-bold">social</li>
+            <li className="uppercase font-extrabold bg-custom-gradient text-transparent bg-clip-text">
+              social
+            </li>
             <li>twitter</li>
             <li>facebook</li>
             <li>instagram</li>
@@ -58,7 +64,7 @@ const Footer = () => {
           </ul>
         </div>
       </div>
-      <div className="bg-purple-950 w-full text-center py-3 font-medium">
+      <div className="w-full text-center py-3 font-medium border-t">
         &copy; {currentYear}{" "}
         <Link
           href={"/"}

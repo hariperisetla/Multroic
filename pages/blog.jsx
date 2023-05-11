@@ -1,4 +1,4 @@
-import BlogPosts from "@/components/blog/BlogPosts";
+import BlogPosts from "@/components/main/blog/BlogPosts";
 import Link from "next/link";
 import React from "react";
 

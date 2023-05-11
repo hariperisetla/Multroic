@@ -1,19 +1,19 @@
 import React from "react";
 import Image from "next/image";
 import { PlayImg, CreateImg, CollaborateImg } from "@/assets/img/Img";
-import FeaturesData from "../../../data/main/features.json";
+import FeaturesData from "../../data/main/features.json";
 
 const Features = () => {
   return (
     <section className="my-24 space-y-10 mx-5">
-      <h1 className="font-extrabold text-3xl md:text-4xl text-purple-950 text-center">
+      <h1 className="font-extrabold bg-custom-gradient text-transparent bg-clip-text text-3xl md:text-4xl text-center">
         Features of Multroic
       </h1>
       <div className="container grid md:grid-cols-3 gap-10 mx-auto text-center">
         {FeaturesData.map((feature) => (
           <div
             key={feature.id}
-            className="bg-purple-100 p-5 shadow hover:shadow-lg space-y-2 py-12 "
+            className="border p-5 shadow hover:shadow-lg space-y-2 py-12 "
           >
             <div className="relative w-full h-80">
               <Image
@@ -23,10 +23,10 @@ const Features = () => {
                 className="object-contain object-center"
               />
             </div>
-            <h4 className="font-extrabold text-2xl text-purple-950 pt-5 capitalize">
+            <h4 className="font-extrabold text-2xl pt-5 capitalize bg-custom-gradient text-transparent bg-clip-text">
               {feature.name}
             </h4>
-            <p className="font-medium text-purple-900">{feature.description}</p>
+            <p className="font-medium">{feature.description}</p>
           </div>
         ))}
       </div>

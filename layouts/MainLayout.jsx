@@ -1,4 +1,4 @@
-import { Header, Footer } from "@/components/Layouts/Main";
+import { Header, Footer } from "@/components/main";
 import React, { useState } from "react";
 
 const MainLayout = ({ children }) => {
@@ -12,18 +12,14 @@ const MainLayout = ({ children }) => {
     if (window.innerWidth < 768) {
       setNav(!nav);
     } else return;
-
-    nav
-      ? document.main.classList.add("overflow-hidden")
-      : document.main.classList.remove("overflow-hidden");
   };
 
   return (
-    <div>
+    <>
       <Header handleResize={handleResize} handleNav={handleNav} nav={nav} />
-      <main>{children}</main>
+      <main className="pt-16">{children}</main>
       <Footer />
-    </div>
+    </>
   );
 };
 

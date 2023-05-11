@@ -3,16 +3,16 @@ import { AboutImg1 } from "@/assets/img/Img";
 import Image from "next/image";
 import Link from "next/link";
 import aboutContent from "../data/main/about.json";
-import { AboutImage } from "@/components/about";
-import AboutContent from "@/components/about/AboutContent";
+import { AboutImage } from "@/components/main/about";
+import AboutContent from "@/components/main/about/AboutContent";
 
 const About = () => {
   return (
     <div className="mb-10">
-      <h1 className="text-3xl font-extrabold py-10 text-center text-purple-950">
+      <h1 className="text-5xl bg-custom-gradient text-transparent bg-clip-text font-extrabold py-10 text-center">
         About Multroic
       </h1>
-      <div className="container max-w-7xl mx-auto leading-loose font-medium text-justify space-y-24 text-xl px-5">
+      <div className="container max-w-7xl  mx-auto leading-loose font-medium text-justify space-y-24 text-xl px-10 md:px-5">
         {aboutContent.map((content) => (
           <div key={content.id}>
             <div

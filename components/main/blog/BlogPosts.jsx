@@ -85,33 +85,31 @@ const BlogPosts = () => {
   ];
 
   return (
-    <div className="bg-gray-100 min-h-screen">
-      <div className="max-w-6xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
-        <div className="lg:grid lg:grid-cols-3 lg:gap-8">
+    <div className="space-y-8 pb-10">
+      <h1 className="text-5xl leading-relaxed text-center font-extrabold bg-custom-gradient text-transparent bg-clip-text">
+        Blog
+      </h1>
+      <div className="max-w-6xl mx-auto space-y-10">
+        <div className="grid grid-cols-1 px-10 md:grid-cols-3 gap-8">
           {posts.map((post) => (
             <div
               key={post.id}
-              className="bg-white overflow-hidden shadow rounded-lg divide-y divide-gray-200"
+              className="border overflow-hidden shadow rounded-lg divide-y divide-gray-200"
             >
               <div className="px-4 py-5 sm:p-6">
-                <h3 className="text-lg font-medium text-gray-900">
+                <h3 className="text-lg font-bold bg-custom-gradient text-transparent bg-clip-text">
                   {post.title}
                 </h3>
-                <p className="mt-1 text-sm text-gray-500">
+                <p className="mt-1 text-sm">
                   By <span className="font-medium">{post.author}</span> on{" "}
                   <time dateTime={post.date}>{post.date}</time>
                 </p>
-                <div className="mt-4 text-sm text-gray-500">
+                <div className="mt-4 text-sm">
                   <p>{post.excerpt}</p>
                 </div>
               </div>
               <div className="px-4 py-4 sm:px-6">
-                <a
-                  href={`/blog/${post.id}`}
-                  className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium text-white bg-purple-950 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >
-                  Read More
-                </a>
+                <button className="custom-button">Read More</button>
               </div>
             </div>
           ))}

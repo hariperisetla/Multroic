@@ -14,4 +14,12 @@
   .bg-custom-gradient {
     @apply bg-gradient-to-r from-primary to-secondary text-black;
   }
+
+  .custom-button {
+    @apply bg-custom-gradient px-4 py-2 font-bold cursor-pointer;
+  }
+
+  .custom-input {
+    @apply font-medium bg-transparent outline-none border-b p-2 w-full;
+  }
 }
