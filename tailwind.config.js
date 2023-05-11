@@ -12,7 +12,7 @@ module.exports = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         image:
-          "linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../assets/img/carl-raw-m3hn2Kn5Bns-unsplash.webp')",
+          "linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/assets/bg-image.webp')",
       },
       fontFamily: {
         montserrat: ["Montserrat", "sans-serif"],
