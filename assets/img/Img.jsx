@@ -13,11 +13,16 @@ import AboutImg6 from "./wilhelm-gunkel-L04Kczg_Jvs-unsplash.jpg";
 
 import FullLogoImg from "./Multroic logo.svg";
 import FullLogoWhiteImg from "./Multroic logo white.svg";
+import FullLogoGradientImg from "./Multroic logo gradient.svg";
+
+import GameBg from "./carl-raw-m3hn2Kn5Bns-unsplash.jpg";
 
 export {
   FullLogoImg,
   FullLogoWhiteImg,
+  FullLogoGradientImg,
   PageNotFoundImg,
+  GameBg,
   PlayImg,
   ShowcaseImg,
   CreateImg,

@@ -7,5 +7,11 @@
 @layer base {
   html {
     @apply font-montserrat;
+    @apply bg-black;
+    @apply text-white;
+  }
+
+  .bg-custom-gradient {
+    @apply bg-gradient-to-r from-primary to-secondary text-black;
   }
 }
