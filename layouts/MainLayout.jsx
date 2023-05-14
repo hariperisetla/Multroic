@@ -1,26 +1,17 @@
+// Importing the Header and Footer components from the main directory
 import { Header, Footer } from "@/components/main";
-import React, { useState } from "react";
 
+// Defining the MainLayout component with children as its parameter
 const MainLayout = ({ children }) => {
-  const [nav, setNav] = useState(false);
-
-  const handleNav = () => {
-    setNav(!nav);
-  };
-
-  const handleResize = () => {
-    if (window.innerWidth < 768) {
-      setNav(!nav);
-    } else return;
-  };
-
+  // Returning the Header component, children wrapped in the main tag with a top padding of 16, and the Footer component
   return (
     <>
-      <Header handleResize={handleResize} handleNav={handleNav} nav={nav} />
+      <Header />
       <main className="pt-16">{children}</main>
       <Footer />
     </>
   );
 };
 
+// Exporting the MainLayout component
 export default MainLayout;
