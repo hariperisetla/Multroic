@@ -4,9 +4,19 @@ import React, { useState, useEffect } from "react";
 import { FullLogoGradientImg } from "@/assets/img/Img";
 import { GiHamburgerMenu, IoCloseSharp } from "@/assets/icons/index";
 
-const Header = ({ handleResize, handleNav, nav }) => {
+const Header = () => {
   const menu = ["about", "blog", "games", "developers", "contact"];
+  const [nav, setNav] = useState(false);
 
+  const handleNav = () => {
+    setNav(!nav);
+  };
+
+  const handleResize = () => {
+    if (window.innerWidth < 768) {
+      setNav(!nav);
+    } else return;
+  };
   const navRef = React.useRef();
   useEffect(() => {
     const handleScroll = () => {
@@ -19,15 +29,10 @@ const Header = ({ handleResize, handleNav, nav }) => {
       }
 
       if (show) {
-        // setNavBg("appBarBgSolid");
         navRef.current.classList.add("bg-black");
         navRef.current.classList.add("border-b");
         navRef.current.classList.add("border-b-secondary");
-
-        // navRef.current.classList.remove("bg-transparent");
-        // navRef.current.classList.add("navbar-dark");
       } else {
-        // setNavBg("appBarBgTransparent");
         navRef.current.classList.remove("bg-black");
         navRef.current.classList.remove("border-b");
         navRef.current.classList.remove("border-b-secondary");
@@ -48,7 +53,7 @@ const Header = ({ handleResize, handleNav, nav }) => {
     >
       <Link
         href={"/"}
-        className="text-3xl font-extrabold  text-purple-950"
+        className="text-3xl font-extrabold text-purple-950"
         onClick={handleResize}
       >
         <div className="relative w-64 h-7 my-2">
