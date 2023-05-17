@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const Hero = () => {
@@ -13,9 +14,14 @@ const Hero = () => {
             games in your browser or download them to play on your device!
           </p>
 
-          <button className="bg-custom-gradient text-black px-5 py-3 text-2xl font-bold">
-            Get Started
-          </button>
+          <div>
+            <Link
+              href={"/signup"}
+              className="bg-custom-gradient text-black px-5 py-3 text-2xl font-bold"
+            >
+              Get Started
+            </Link>
+          </div>
         </div>
       </div>
     </div>
