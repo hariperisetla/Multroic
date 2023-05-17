@@ -51,8 +51,8 @@ const Faqs = () => {
             <button
               onClick={() => handleFaqAccordion(faq.id)}
               className={`${
-                accNum === faq.id ? "bg-custom-gradient p-1" : ""
-              } flex font-bold items-center hover:bg-custom-gradient justify-between text-left px-3 duration-500 text-md py-3 border shadow w-full`}
+                accNum === faq.id ? "bg-slate-800 p-1" : ""
+              } flex font-medium items-center hover:bg-slate-800 justify-between text-left px-3 duration-500 text-md py-3 border border-slate-700 shadow w-full`}
             >
               {faq.question}
               {accNum === faq.id ? (
@@ -68,7 +68,7 @@ const Faqs = () => {
             <div
               className={`${
                 accNum === faq.id ? "block" : "hidden"
-              } border p-5 text-justify duration-500 `}
+              } border border-slate-700 p-5 text-justify duration-500 `}
             >
               <p>{faq.answer}</p>
             </div>

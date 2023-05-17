@@ -7,7 +7,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bottom-0 text-white flex flex-col items-center justify-center pt-10 border-t w-full mx-auto">
+    <footer className="bottom-0 text-white flex flex-col items-center justify-center pt-10 border-t border-t-slate-700 w-full mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-4 max-w-6xl p-10 md:p-20 space-y-10 md:space-y-0 md:space-x-20">
         <div className="text-center md:text-left w-full flex flex-col justify-center">
           <div className="relative w-full md:w-64 h-7 mb-3">
@@ -64,7 +64,7 @@ const Footer = () => {
           </ul>
         </div>
       </div>
-      <div className="w-full text-center py-3 font-medium border-t">
+      <div className="w-full text-center py-3 font-medium border-t border-t-slate-700">
         &copy; {currentYear}{" "}
         <Link
           href={"/"}

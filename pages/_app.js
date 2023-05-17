@@ -1,8 +1,9 @@
-import { MainLayout } from "@/layouts";
+import { DashboardLayout, MainLayout } from "@/layouts";
 import "@/styles/globals.css";
 
 const layouts = {
   MainL: MainLayout,
+  DashboardL: DashboardLayout,
 };
 
 export default function App({ Component, pageProps }) {

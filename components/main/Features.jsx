@@ -13,7 +13,7 @@ const Features = () => {
         {FeaturesData.map((feature) => (
           <div
             key={feature.id}
-            className="border p-5 shadow hover:shadow-lg space-y-2 py-12 "
+            className="border border-slate-700 p-5 shadow hover:shadow-lg space-y-2 py-12 "
           >
             <div className="relative w-full h-80">
               <Image

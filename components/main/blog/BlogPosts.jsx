@@ -94,7 +94,7 @@ const BlogPosts = () => {
           {posts.map((post) => (
             <div
               key={post.id}
-              className="border overflow-hidden shadow rounded-lg divide-y divide-gray-200"
+              className="border border-slate-700 overflow-hidden shadow rounded-lg divide-y divide-slate-700"
             >
               <div className="px-4 py-5 sm:p-6">
                 <h3 className="text-lg font-bold bg-custom-gradient text-transparent bg-clip-text">

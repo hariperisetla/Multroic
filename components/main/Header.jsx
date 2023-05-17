@@ -29,13 +29,13 @@ const Header = () => {
       }
 
       if (show) {
-        navRef.current.classList.add("bg-black");
-        navRef.current.classList.add("border-b");
-        navRef.current.classList.add("border-b-secondary");
+        navRef.current.classList.add("bg-slate-900");
+        navRef.current.classList.add("shadow-sm");
+        // navRef.current.classList.add("shadow-secondary");
       } else {
-        navRef.current.classList.remove("bg-black");
-        navRef.current.classList.remove("border-b");
-        navRef.current.classList.remove("border-b-secondary");
+        navRef.current.classList.remove("bg-slate-900");
+        navRef.current.classList.remove("shadow-sm");
+        // navRef.current.classList.remove("shadow-secondary");
       }
     };
     document.addEventListener("scroll", handleScroll);
@@ -49,7 +49,7 @@ const Header = () => {
       ref={navRef}
       className={`${
         nav ? "bg-black overcroll-y-none overflow-y-scroll" : ""
-      } z-20 flex justify-between py-3 px-5 md:px-10 fixed w-full shadow items-center flex-wrap duration-200`}
+      } z-20 flex justify-between py-3 px-5 md:px-10 fixed w-full shadow-sm items-center flex-wrap duration-200`}
     >
       <Link
         href={"/"}
