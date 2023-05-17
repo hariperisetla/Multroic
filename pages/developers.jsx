@@ -61,7 +61,7 @@ const Developers = () => {
       <h1 className="text-5xl font-extrabold bg-custom-gradient text-transparent bg-clip-text text-center mb-8">
         Meet Our Developers
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 px-8">
         {developers.map((developer) => (
           <DeveloperCard key={developer.id} developer={developer} />
         ))}
