@@ -48,8 +48,8 @@ const Header = () => {
     <header
       ref={navRef}
       className={`${
-        nav ? "bg-black overcroll-y-none overflow-y-scroll" : ""
-      } z-20 flex justify-between py-3 px-5 md:px-10 fixed w-full shadow-sm items-center flex-wrap duration-200`}
+        nav ? "overcroll-y-none overflow-y-scroll" : ""
+      } z-20 flex justify-between py-3 px-5 md:px-10 fixed w-full shadow-sm items-center duration-200`}
     >
       <Link
         href={"/"}
@@ -75,12 +75,17 @@ const Header = () => {
       </div>
 
       <ul
-        className={
-          nav
-            ? "duration-500 w-full space-y-16 text-3xl font-medium py-5 bg-black h-screen"
-            : "hidden duration-500 md:flex items-center md:space-y-0 space-x-8 space-y-2 font-semibold text-lg"
-        }
+        className={`
+          ${
+            nav ? "left-0" : "left-[-100%]"
+          } duration-500 fixed md:static top-0 md:space-y-0 text-lg  md:space-x-8 font-semibold px-5 justify-between md:justify-normal w-full md:w-auto md:h-auto h-full md:py-0 space-y-16 md:flex py-5 items-center bg-slate-900 md:bg-transparent`}
       >
+        <li
+          onClick={handleNav}
+          className="md:hidden w-full flex justify-end text-right"
+        >
+          <IoCloseSharp size={30} className="" />
+        </li>
         {menu.map((page) => (
           <li
             key={page}
