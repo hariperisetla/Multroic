@@ -92,9 +92,16 @@ const Header = () => {
             </Link>
           </li>
         ))}
-
         <li>
-          <Link href={"/"} className="bg-custom-gradient p-3">
+          <Link
+            href={"/signin"}
+            className="bg-custom-gradient group hover:bg-custom-gradient text-transparent bg-clip-text border-secondary border hover:border-white p-[0.70rem] hover:text-inherit"
+          >
+            Sign In
+          </Link>
+        </li>
+        <li className="hover:-translate-y-[2px]">
+          <Link href={"/signup"} className="bg-custom-gradient p-3">
             Get Started
           </Link>
         </li>

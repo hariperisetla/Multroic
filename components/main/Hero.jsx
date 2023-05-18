@@ -14,7 +14,7 @@ const Hero = () => {
             games in your browser or download them to play on your device!
           </p>
 
-          <div>
+          <div className="hover:-translate-y-[2px]">
             <Link
               href={"/signup"}
               className="bg-custom-gradient text-black px-5 py-3 text-2xl font-bold"
