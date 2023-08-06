@@ -29,6 +29,7 @@ const MainLayout = ({ children }) => {
       ) : (
         <>
           <Header />
+          {currentUser && currentUser.displayName}
           <main className="pt-16">{children}</main>
           <Footer />
         </>
