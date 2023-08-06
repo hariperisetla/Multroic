@@ -11,6 +11,8 @@ import AboutImg4 from "./austin-distel-wD1LRb9OeEo-unsplash.jpg";
 import AboutImg5 from "./ian-schneider-TamMbr4okv4-unsplash.jpg";
 import AboutImg6 from "./wilhelm-gunkel-L04Kczg_Jvs-unsplash.jpg";
 
+import ProfileImagePlaceholder from "./profile_image_placeholder.jpg";
+
 import FullLogoImg from "./Multroic logo.svg";
 import FullLogoWhiteImg from "./Multroic logo white.svg";
 import FullLogoGradientImg from "./Multroic logo gradient.svg";
@@ -34,4 +36,5 @@ export {
   AboutImg4,
   AboutImg5,
   AboutImg6,
+  ProfileImagePlaceholder,
 };
