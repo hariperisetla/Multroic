@@ -7,7 +7,7 @@
 @layer base {
   html {
     @apply font-montserrat;
-    @apply bg-slate-900;
+    @apply bg-zinc-900;
     @apply text-white;
   }
 
