@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import GithubButton from "react-github-login-button";
 import GoogleButton from "react-google-button";
 
@@ -6,9 +6,24 @@ import { useAuth } from "../context/UserContext";
 import { useRouter } from "next/router";
 
 const SignIn = () => {
-  const { githubLogin } = useAuth();
+  const {
+    currentUser,
+    githubLogin,
+    passwordLessLogin,
+    passwordLessConfirmation,
+  } = useAuth();
+
+  useEffect(() => {
+    passwordLessConfirmation();
+  });
+  const [email, setEmail] = useState("");
 
   const router = useRouter();
+
+  const handlePasswordLessSignIn = (e) => {
+    e.preventDefault();
+    passwordLessLogin(email);
+  };
 
   const handleGithubLogin = () => {
     githubLogin();
@@ -22,9 +37,19 @@ const SignIn = () => {
         </h1>
       </div>
       <div className="space-y-3 border border-gray-700 p-5 rounded-xl">
-        {/* <form action="">
-          <input className="custom-input" type="text" placeholder="email" />
-        </form> */}
+        <form action="">
+          <input
+            className="custom-input"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            type="email"
+            placeholder="Email"
+          />
+
+          <button type="submit" onClick={handlePasswordLessSignIn}>
+            Sign In with Email
+          </button>
+        </form>
 
         <GithubButton type="dark" onClick={handleGithubLogin} />
         <GoogleButton
