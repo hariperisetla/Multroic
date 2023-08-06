@@ -9,7 +9,7 @@ import { getStorage } from "firebase/storage";
 // import "firebase/storage";
 import "firebase/firestore";
 
-import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -20,7 +20,7 @@ import { getAuth, GoogleAuthProvider } from "firebase/auth";
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-//   databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
+  //   databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
   projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
   storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
@@ -48,5 +48,7 @@ const storage = getStorage(app);
 export { db, storage };
 
 export const googleAuth = new GoogleAuthProvider();
+
+export const githubProvider = new GithubAuthProvider();
 
 export const firebaseAuth = getAuth(app);
