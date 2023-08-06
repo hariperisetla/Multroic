@@ -4,7 +4,11 @@ import React, { useState, useEffect } from "react";
 import { FullLogoGradientImg } from "@/assets/img/Img";
 import { GiHamburgerMenu, IoCloseSharp } from "@/assets/icons/index";
 
+import { useAuth } from "@/context/UserContext";
+
 const Header = () => {
+  const { currentUser, logout } = useAuth();
+
   const menu = ["about", "blog", "games", "developers", "contact"];
   const [nav, setNav] = useState(false);
 
@@ -97,19 +101,28 @@ const Header = () => {
             </Link>
           </li>
         ))}
-        <li>
-          <Link
-            href={"/signin"}
-            className="bg-custom-gradient group hover:bg-custom-gradient text-transparent bg-clip-text border-secondary border hover:border-white p-[0.70rem] hover:text-inherit"
-          >
-            Sign In
-          </Link>
-        </li>
-        <li className="hover:-translate-y-[2px]">
-          <Link href={"/signup"} className="bg-custom-gradient p-3">
-            Get Started
-          </Link>
-        </li>
+        {console.log(currentUser)}
+        {currentUser && currentUser ? (
+          <li>
+            <button onClick={logout}>Logout</button>
+          </li>
+        ) : (
+          <>
+            <li>
+              <Link
+                href={"/signin"}
+                className="bg-custom-gradient group hover:bg-custom-gradient text-transparent bg-clip-text border-secondary border hover:border-white p-[0.70rem] hover:text-inherit"
+              >
+                Sign In
+              </Link>
+            </li>
+            <li className="hover:-translate-y-[2px]">
+              <Link href={"/signup"} className="bg-custom-gradient p-3">
+                Get Started
+              </Link>
+            </li>
+          </>
+        )}
       </ul>
     </header>
   );
