@@ -14,6 +14,7 @@ import {
   sendSignInLinkToEmail,
   isSignInWithEmailLink,
   signInWithEmailLink,
+  signInWithRedirect,
 } from "firebase/auth";
 
 import { useRouter } from "next/router";
@@ -100,6 +101,10 @@ const UserProvider = ({ children }) => {
     }
   };
 
+  const githubRedirectLogin = () => {
+    signInWithRedirect(auth, githubProvider);
+  };
+
   const githubLogin = () => {
     signInWithPopup(auth, githubProvider)
       .then((result) => {
@@ -131,6 +136,7 @@ const UserProvider = ({ children }) => {
     logout,
     passwordLessLogin,
     passwordLessConfirmation,
+    githubRedirectLogin,
   };
 
   return (

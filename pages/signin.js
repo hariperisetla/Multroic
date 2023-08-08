@@ -11,6 +11,7 @@ const SignIn = () => {
     githubLogin,
     passwordLessLogin,
     passwordLessConfirmation,
+    githubRedirectLogin,
   } = useAuth();
 
   useEffect(() => {
@@ -27,6 +28,10 @@ const SignIn = () => {
 
   const handleGithubLogin = () => {
     githubLogin();
+  };
+
+  const handleGithubRedirectLogin = () => {
+    githubRedirectLogin();
   };
 
   return (
@@ -51,7 +56,13 @@ const SignIn = () => {
           </button>
         </form>
 
-        <GithubButton type="dark" onClick={handleGithubLogin} />
+        <div className="md:hidden">
+          <GithubButton type="dark" onClick={handleGithubRedirectLogin} />
+        </div>
+        <div className="md:flex hidden">
+          <GithubButton type="dark" onClick={handleGithubLogin} />
+        </div>
+
         <GoogleButton
           type="dark"
           onClick={() => console.log("Google Clicked")}
