@@ -16,8 +16,9 @@ import { IoMdNotifications, IoMdSettings } from "react-icons/io";
 import { BiSolidHelpCircle } from "react-icons/bi";
 import { ProfileImagePlaceholder } from "@/assets/img/Img";
 import { useAuth } from "@/context/UserContext";
+import { AiOutlineClose } from "react-icons/ai";
 
-const SideBar = () => {
+const SideBar = ({ sideBar }) => {
   const { currentUser, logout } = useAuth();
 
   const menuItems = [
@@ -30,21 +31,31 @@ const SideBar = () => {
   ];
 
   return (
-    <div className="bg-zinc-800 fixed w-64 h-screen space-y-10 flex flex-col">
-      <Link
-        href={"/"}
-        // onClick={handleResize}
-      >
-        <div className="relative px-5 my-5">
-          <Image
-            src={FullLogoGradientImg}
-            width={0}
-            height={0}
-            alt="multroic logo"
-            className="object-contain object-left md:object-center"
-          />
+    <div
+      className={`${
+        sideBar ? "left-[0px]" : "left-[-400px]"
+      } bg-zinc-800 z-10 fixed md:left-0 shadow-xl w-64 h-screen space-y-10 md:flex duration-500 flex-col`}
+    >
+      <div className="flex items-center justify-between px-3">
+        <Link
+          href={"/"}
+          // onClick={handleResize}
+        >
+          <div className="relative w-40 md:w-52 my-6 md:px-5 md:my-8">
+            <Image
+              src={FullLogoGradientImg}
+              width={0}
+              height={0}
+              alt="multroic logo"
+              className="object-contain object-left md:object-center"
+            />
+          </div>
+        </Link>
+
+        <div className="bg-zinc-900 p-2 rounded-full md:hidden">
+          <AiOutlineClose className="text-xl" />
         </div>
-      </Link>
+      </div>
 
       <div className="space-y-5">
         <div className="relative px-5 space-y-5 text-center justify-center w-full flex flex-col items-center">

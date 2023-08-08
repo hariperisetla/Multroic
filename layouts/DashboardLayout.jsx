@@ -8,6 +8,8 @@ import Footer from "@/components/dashboard/Footer";
 const DashboardLayout = ({ children }) => {
   const { currentUser } = useAuth();
 
+  const [sideBar, setSideBar] = useState(false);
+
   const router = useRouter();
 
   const [pageLoad, setPageLoad] = useState(false);
@@ -24,9 +26,9 @@ const DashboardLayout = ({ children }) => {
 
   return (
     <>
-      <SideBar />
-      <main className="ml-64 flex-grow">
-        <Header />
+      <SideBar sideBar={sideBar} />
+      <main className="md:ml-64 flex-grow">
+        <Header setSideBar={setSideBar} sideBar={sideBar} />
         <div className="flex flex-col h-screen mt-5 text-white flex-grow">
           {children}
           <Footer />

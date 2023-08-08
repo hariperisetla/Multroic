@@ -5,11 +5,11 @@ const Dashboard = () => {
   const { currentUser } = useAuth();
 
   return (
-    <main className="container mx-auto px-10 flex-grow space-y-10">
+    <main className="container mx-auto px-5 md:px-10 flex-grow space-y-10">
       <div className="mx-auto py-4">
         {currentUser && (
           <>
-            <h1 className="text-2xl font-semibold">
+            <h1 className="text-xl md:text-2xl font-semibold">
               Welcome, {currentUser.displayName || "User"}
             </h1>
             <p className="text-zinc-400">Your open-source gaming hub</p>

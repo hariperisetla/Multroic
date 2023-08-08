@@ -19,7 +19,10 @@ import FullLogoGradientImg from "./Multroic logo gradient.svg";
 
 import GameBg from "./carl-raw-m3hn2Kn5Bns-unsplash.jpg";
 
+import LogoIcon from "./logo icon.svg";
+
 export {
+  LogoIcon,
   FullLogoImg,
   FullLogoWhiteImg,
   FullLogoGradientImg,
