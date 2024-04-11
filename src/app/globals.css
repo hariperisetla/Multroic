@@ -1,27 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer base {
+  html {
+    @apply font-montserrat bg-zinc-950 text-white;
   }
-}
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  .bg-custom-gradient {
+    @apply bg-gradient-to-r from-primary to-secondary text-black;
+  }
+
+  .custom-button {
+    @apply bg-custom-gradient px-4 py-2 font-bold cursor-pointer;
+  }
+
+  .custom-input {
+    @apply font-medium bg-transparent outline-none border-b border-b-slate-700 p-2 w-full;
+  }
 }
